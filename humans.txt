@@ -1,0 +1,36 @@
+/* TEAM */
+
+    IS_BOUSSE: Jeanne Ryan
+    Contact: jryan [at] synergema.com
+    Twitter: @jeanneryan
+    From: Idaho??
+
+    Designer Extraordinaire / Genius: Chad Clark
+    Contact: chadjclark [at] gmail.com
+    Twitter: @chadclark
+    From: Salt Lake City, UT
+
+    Developer Extraordinaire / Genius: Brandon Haslip
+    Contact: bhaslip [at] gmail.com
+    Twitter: @httpster
+    From: Pottstown, PA
+
+    Graphics Whiz: Wes Manley
+    Contact: wmanley [at] synergema.com
+    Twitter: @wesmanely
+    From: Phoenixville, PA
+
+    That Guy: Michael Reiner
+    Contact: mreiner77 [at] gmail.com
+    Twitter: @radarseven
+    From: Cleveland, OH
+
+/* THANKS */
+
+
+
+/* SITE */
+
+Last Updated: 3/24/2015
+Site proudly powered by [Craft](http://buildwithcraft.com).
+We run on coffee, hops, OS X and Sublime Text, but not necessarily in that particular order.

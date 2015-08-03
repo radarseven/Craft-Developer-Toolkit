@@ -1,0 +1,43 @@
+{# Global breadcrumbs partial. #}
+{% spaceless %}
+{% set segments = craft.request.segments %} {# Array of segments #}
+{% set entries = [] %} {# Placeholder for entries #}
+
+{# Loop through and progressively set the uri for lookup #}
+{% for i in 0..segments|length %}
+    {% if i < segments|length %} {# Don't want the last item #}
+        {% set length = i + 1 %}
+        {% set uri = segments|slice(0, length)|join('/') %}
+        {% set entry = craft.entries.uri(uri).find() %} {# Entry lookup #}
+        {% if entry|length %}
+            {% set entries = entries|merge(entry) %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{# Optionally pass in an array of entries named `breadcrumbs` and these will be merged into the exsting entries. #}
+{% if breadcrumbs is defined and breadcrumbs|length %}
+    {% set entries = entries|merge([breadcrumbs]) %}
+{% endif %}
+{% endspaceless %}
+<div class="container container--outer">
+    <nav class="breadcrumbs breadcrumbs__global">
+        <ul>
+            <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/" title="" itemprop="url"><span itemprop="title">Home</span></a>
+            </li>
+            {% for entry in entries %}
+            {% set title = entry.pageTitle is defined and entry.pageTitle is not empty ? entry.pageTitle : entry.title %}
+            {% if loop.index < loop.length %}
+            <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="{{ entry.url }}" title="{{ title }}" itemprop="url"><span itemprop="title">{{ title }}</span></a>
+            </li>
+            {% else %}
+            <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <span itemprop="title">{{ title }}</span>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+</div>

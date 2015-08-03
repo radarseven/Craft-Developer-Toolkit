@@ -1,0 +1,49 @@
+# Sublime Text Project Files #
+##############################
+*.sublime-*
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Sass Cache #
+##############
+public/*.sass-cache*
+
+# Node Modules #
+################
+public/node_modules
+
+# Bower Components #
+################
+public/bower_components
+
+# Craft Caches #
+################
+craft/storage
+
+# Craft Local Config #
+######################
+craft/config/local/db.php
+craft/config/local/general.php
+
+# DB Import #
+#############
+getdb.command
+getdb.sh
+_sql/_local
+
+# Misc. #
+#########
+public/assets/build/css/*.css.map
+
+# PDF Assets #
+##############
+public/assets/pdf
+templates/test
