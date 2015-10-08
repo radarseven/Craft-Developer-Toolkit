@@ -1,0 +1,6 @@
+{% extends '_/layouts/default' %}
+
+{% block content %}
+    <h1>I'm in the content block.</h1>
+    {% include 'section/_partials/example' ignore missing %}
+{% endblock content %}

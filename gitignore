@@ -33,11 +33,20 @@ craft/storage
 craft/config/local/db.php
 craft/config/local/general.php
 
-# DB Import #
-#############
+# Craft Plugin Submodules #
+###########################
+plugins/src
+
+# MySQL Database #
+##################
 getdb.command
 getdb.sh
 _sql/_local
+
+# Composer / DotEnv #
+#####################
+/vendor/
+.env
 
 # Misc. #
 #########

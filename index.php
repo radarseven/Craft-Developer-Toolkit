@@ -1,5 +1,15 @@
 <?php
 
+require_once('../vendor/autoload.php');
+
+try {
+    $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+    $dotenv->load();
+    $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS']);
+} catch (Exception $e) {
+    exit('Could not find a .env file.');
+}
+
 // Path to your craft/ folder
 $craftPath = '../craft';
 
@@ -13,11 +23,12 @@ if (stristr($_SERVER['HTTP_HOST'], '.dev')) {
     // Setup environment-friendly configs
     switch ($_SERVER['HTTP_HOST']) {
 
-        case 'example.com':
+        case 'templeton.org':
             define('ENV', 'prod');
             break;
 
-        case 'dev.example.com'
+        case 'www.templeton.synergemadev.com':
+        case 'templeton.synergemadev.com':
             define('ENV', 'dev');
             break;
 

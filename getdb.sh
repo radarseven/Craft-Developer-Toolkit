@@ -19,22 +19,29 @@
 LOCALBACKUPDIR="./_sql/local/"
 
 # Set mysqldump client
+# If you're not using MAMP and you're on a Unix/Linux system,
+# run `which mysqldump` from a terminal prompt
+# and set this to whatever that returns.
 MYSQLDUMP="/Applications/MAMP/Library/bin/mysqldump"
+
 # Set mysql client
+# If you're not using MAMP and you're on a Unix/Linux system,
+# run `which mysql` from a terminal prompt
+# and set this to whatever that returns.
 MYSQL="/Applications/MAMP/Library/bin/mysql"
 
 # Set local database host
 LOCALDBHOST="localhost"
 # Set local database user
 LOCALDBUSER=""
-# Set local database name
-LOCALDBNAME=""
 # Set local database password
 LOCALDBPASS=""
+# Set local database name
+LOCALDBNAME=""
 # Set local database port
-# For Homestead
+# For Homestead or any other configuration
+# using a custom port for MySQL.
 LOCALDBPORT="3306"
-
 
 # ----------------------------------------------
 # REMOTE SETTINGS
@@ -42,20 +49,23 @@ LOCALDBPORT="3306"
 
 # Set SSH host
 SSHHOST="" # Server connection i.e. user@1.1.1.1
-
 # Set remote database host
 REMOTEDBHOST=""
 # Set remote database user
 REMOTEDBUSER=""
-# Set remote database name
-REMOTEDBNAME=""
 # Set remote database password (leave single quotes for special characters)
 REMOTEDBPASS="''"
+# Set remote database name
+REMOTEDBNAME=""
 
 
-# ----------------------------------------------
-# DO NOT EDIT! 
-# ----------------------------------------------
+
+
+##################################################
+# ---------------------------------------------- #
+#                 DO NOT EDIT! 
+# ---------------------------------------------- #
+##################################################
 
 
 # Let’s go!

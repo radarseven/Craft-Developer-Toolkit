@@ -1,0 +1,32 @@
+{# Head #}
+{% include '_includes/head' ignore missing %}
+<body>
+
+{# Main navigation #}
+{% include '_patterns/organisms/nav/main-nav' ignore missing only %}
+
+{# Content #}
+{% block content %}{% endblock %}
+
+{# Callouts #}
+{% block callouts %}{% endblock %}
+
+{# Breadcrumbs #}
+{% if craft.request.firstSegment is not empty %}
+{% include '_patterns/molecules/nav/breadcrumbs' ignore missing %}
+{% endif %}
+
+{# Footer #}
+{% include '_patterns/organisms/footer' ignore missing only %}
+
+{# Scripts #}
+{% include '_includes/scripts' ignore missing %}
+
+{# Script injection. #}
+{% if jsBlock is defined %}{% includeJs jsBlock %}{% endif %}
+
+{# Optional javascript include #}
+{% block jsFoot %}{% endblock %}
+
+</body>
+</html>

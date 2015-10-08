@@ -1,4 +1,5 @@
 {# Global breadcrumbs partial. #}
+{% cache globally if config.cache %}
 {% spaceless %}
 {% set segments = craft.request.segments %} {# Array of segments #}
 {% set entries = [] %} {# Placeholder for entries #}
@@ -41,3 +42,4 @@
         </ul>
     </nav>
 </div>
+{% endcache %}

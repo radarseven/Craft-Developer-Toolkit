@@ -1,0 +1,3 @@
+# Disallow all web crawlers in dev environments.
+User-agent: *
+Disallow: /
