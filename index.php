@@ -1,6 +1,7 @@
 <?php
 
-require_once('../vendor/autoload.php');
+require_once('../vendor/autoload.php'); // Composer autoload for DotEnv support.
+require_once('../craft/config/env.php'); // Environment configs.
 
 try {
     $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
@@ -15,28 +16,6 @@ $craftPath = '../craft';
 
 // Define protocol relative site URL
 define('CRAFT_SITE_URL', '//' . $_SERVER['SERVER_NAME']);
-
-// Check for .dev first
-if (stristr($_SERVER['HTTP_HOST'], '.dev')) {
-    define('ENV', 'local');
-} else {
-    // Setup environment-friendly configs
-    switch ($_SERVER['HTTP_HOST']) {
-
-        case 'templeton.org':
-            define('ENV', 'prod');
-            break;
-
-        case 'www.templeton.synergemadev.com':
-        case 'templeton.synergemadev.com':
-            define('ENV', 'dev');
-            break;
-
-        default:
-            define('ENV', 'prod');
-            break;
-    }
-}
 
 // Move plugins path to right above web root
 define('CRAFT_PLUGINS_PATH', realpath(dirname(__FILE__) . "/../plugins") . '/');
