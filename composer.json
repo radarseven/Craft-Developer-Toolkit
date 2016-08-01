@@ -1,6 +1,5 @@
 {
     "require": {
-        // PHP DotEnv
         "vlucas/phpdotenv": "^2.0"
     }
 }
