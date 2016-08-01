@@ -4,14 +4,10 @@
  * Define environment based on the hostname.
  */
 
-// Check for .dev first
-if (stristr($_SERVER['HTTP_HOST'], '.dev')) {
-    define('ENV', 'local');
-} else {
-    // Setup environment-friendly configs
-    switch ($_SERVER['HTTP_HOST']) {
-        default:
-            define('ENV', 'prod');
-        break;
-    }
+try {
+    $env = getenv('APP_ENV');
+    define('ENV', $env);
+    define('CRAFT_ENVIRONMENT', $env);
+} catch (Exception $e) {
+    return $e->getMessage();
 }

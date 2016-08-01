@@ -1,0 +1,22 @@
+{
+    "name": "craft-cli/cli",
+    "description": "Command line interface for Craft CMS",
+    "authors": [
+        {
+            "name": "Rob Sanchez",
+            "email": "info@robsanchez.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "CraftCli\\": "src/" }
+    },
+    "bin": [
+        "bin/craft"
+    ],
+    "require": {
+        "symfony/console": "~2.7|~3.0",
+        "symfony/event-dispatcher": "~2.7|~3.0",
+        "psy/psysh": "~0.5.1",
+        "xamin/handlebars.php": "0.10.*"
+    }
+}
