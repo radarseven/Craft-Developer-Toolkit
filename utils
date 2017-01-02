@@ -5,5 +5,5 @@ COMMAND=$1; shift;
 export MPATH=`pwd -P`
 popd > /dev/null
 
-[ ! -f ${MPATH}/_utils/${COMMAND} ]
-${MPATH}/_utils/${COMMAND} "$@"
+[ ! -f ${MPATH}/_utils/${COMMAND}.sh ]
+${MPATH}/_utils/${COMMAND}.sh "$@"
