@@ -1,9 +1,37 @@
 <?php
 
 /**
- * DotEnv config.
+ * -----------------------------------------------------------
+ * Start config modifications.
+ * @url https://github.com/nystudio107/craft-multi-environment
+ * -----------------------------------------------------------
  */
-require_once(dirname(__DIR__) . '/env.php');
+
+// Load the local Craft environment
+if (file_exists('../.env.php')) {
+    require_once '../.env.php';
+}
+
+// Default environment
+if (!defined('CRAFT_ENVIRONMENT')) {
+    define('CRAFT_ENVIRONMENT', getenv('CRAFTENV_CRAFT_ENVIRONMENT'));
+}
+
+/**
+ * Move plugins path to right above web root.
+ */
+define('CRAFT_PLUGINS_PATH', realpath('../plugins/'));
+
+/**
+ * Move templates path to right above web root.
+ */
+define('CRAFT_TEMPLATES_PATH', realpath('../templates/'));
+
+/**
+ * -----------------------------------------------------------
+ * END config modifications
+ * -----------------------------------------------------------
+ */
 
 // Path to your craft/ folder
 $craftPath = '../craft';

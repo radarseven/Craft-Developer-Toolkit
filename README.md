@@ -1,35 +1,31 @@
 # Craft Developer Toolkit
-<<<<<<< HEAD
 
-A starter kit and collection of developer tools for building [Craft CMS](http://buildwithcraft.com) powered websites. This is opinionated and you may not agree with everything here. If you disagree with something post an issue.
-
------
-
-This is still very much a work in progress. Most recent updates are in the [develop branch](https://github.com/radarseven/Craft-Developer-Toolkit/tree/develop).
-=======
 A starter kit and collection of developer tools for building [Craft CMS](http://buildwithcraft.com) powered websites.
-
-This is opinionated and you may not agree with everything here. This is opinionated and you may not agree with everything here. If you disagree with something post an issue.
 
 ## Initial Setup
 
 1. Download the zip file and unpack.
-2. Bang open a shell, `cd` into the directory you've unpacked the zip to and run `bash start.sh`. This will do the following: 
-    1. Run Matt's `makeItCraft` shell script. This will download Craft, follow the prompts. We also recommend that you use Matt's `DotEnv` setup and this toolkit assumes you will.
+2. Bang open a shell, `cd` into the directory you've unpacked the zip to and run `utils start`. This will do the following: 
+    1. Run Matt Stauffer's excellent `makeItCraft` shell script. The script will download Craft. Follow the prompts.
     2. Remove some unneeded files from the fresh Craft install.
     3. Move the customized files into their right place.
     4. Set permissions on files and directories.
+    5. Install required composer packages.
     5. Remove the setup scripts.
 
 ## What's Different From a Stock Craft Install?
 
 ### Config
 
-This setup supports a multi-environment config a bit differently than the native Craft config.
-
-
+This is using a slightly modified version of [@nystudio107's CME](https://github.com/nystudio107/craft-multi-environment).
 
 ## Credits
 
-- [Matt Stauffer](https://github.com/mattstauffer): This setup uses Matt's handy `makeItCraft` shell script for the initial Craft CMS setup.
->>>>>>> develop
+- [@mattstauffer: makeItCraft](https://github.com/mattstauffer/makeItCraft)
+- [@nystudio107: Craft CME](https://github.com/nystudio107/craft-multi-environment)
+
+# Changelog
+
+## 1.0.0 -- 01/02/2016
+
+- Initial release for all intents and purposes.
