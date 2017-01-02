@@ -1,52 +1,86 @@
 <?php
 
 /**
-* General Configuration
-*
-* All of your system's general configuration settings go in here.
-* You can see a list of the default settings in craft/app/etc/config/defaults/general.php
-*/
+ * General Configuration
+ * @url https://craftcms.com/docs/config-settings
+ *
+ * All of your system's general configuration settings go in here.
+ * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
+ */
 
-$customGeneralConfig = array(
+// $_ENV constants are loaded by craft-multi-environment from .env.php via public/index.php
+return array(
 
-    'siteUrl'                         => $_SERVER['SERVER_PROTOCOL'] . '://' . $_SERVER['SERVER_NAME'],
+    // All environments
+    '*'          => array(
+        'siteUrl'                          => getenv('CRAFTENV_SITE_URL'),
 
-    // Triggers
-    'cpTrigger'                       => 'admin',
-    'resourceTrigger'                 => 'resources',
-    'actionTrigger'                   => 'actions',
-    'pageTrigger'                     => 'page/',
+        // Disable auto updates by default.
+        'allowAutoUpdates'                 => false,
 
-    // Manage our routes in the craft/config/routes.php file
-    'siteRoutesSource'                => 'file',
+        // Triggers
+        'cpTrigger'                        => 'admin',
+        'resourceTrigger'                  => 'resources',
+        'actionTrigger'                    => 'actions',
+        'pageTrigger'                      => 'page/',
 
-    // URL rewriting auto-magically
-    'omitScriptNameInUrls'            => true,
-    'usePathInfo'                     => true,
+        // Manage our routes in the craft/config/routes.php file
+        'siteRoutesSource'                 => 'file',
 
-    // Auto login after account activation
-    'autoLoginAfterAccountActivation' => true,
+        // URL rewriting auto-magically
+        'omitScriptNameInUrls'             => true,
+        'usePathInfo'                      => true,
 
-    // Remember user sessions longer
-    'rememberedUserSessionDuration'   => 'P3M',
+        // Auto login after account activation
+        'autoLoginAfterAccountActivation'  => true,
 
-    // PHP memory limit
-    'phpMaxMemoryLimit'               => '512M',
+        // Remember user sessions longer
+        'rememberedUserSessionDuration'    => 'P3M',
 
-    // Configures Craft to generate new image transforms right when getUrl() is called, rather than when the browser first requests the image.
-    'generateTransformsBeforePageLoad'=> true,
+        // PHP memory limit
+        'phpMaxMemoryLimit'                => '512M',
 
-    // Never use index.php in the URL
-    'omitScriptNameInUrls'            => true,
+        // Configures Craft to generate new image transforms right when getUrl() is called, rather than when the browser first requests the image.
+        'generateTransformsBeforePageLoad' => true,
 
-    // Cache
-    'cache'                           => false,
+        // Never use index.php in the URL
+        'omitScriptNameInUrls'             => true,
 
+        // Cache
+        'cache'                            => false,
+        'cacheDuration'                    => false,
+
+        // Require email address as username.
+        'useEmailAsUsername'               => true,
+
+        // Craft environment.
+        'craftEnv'                         => CRAFT_ENVIRONMENT,
+
+        // Set the environmental variables
+        'environmentVariables'             => array(
+            'baseUrl'  => getenv('CRAFTENV_BASE_URL'),
+            'basePath' => getenv('CRAFTENV_BASE_PATH'),
+        ),
+    ),
+
+    // Production environment
+    'production' => array(
+        'devMode'               => false,
+        'enableTemplateCaching' => true,
+        'allowAutoUpdates'      => false,
+    ),
+
+    // Staging (pre-production) environment
+    'staging'    => array(
+        'devMode'               => false,
+        'enableTemplateCaching' => true,
+        'allowAutoUpdates'      => false,
+    ),
+
+    // Local (development) environment
+    'local'      => array(
+        'devMode'               => true,
+        'enableTemplateCaching' => false,
+        'allowAutoUpdates'      => true,
+    ),
 );
-
-// Merge any environment-specific custom config settings
-if (is_array($customEnvironmentConfig = @include (CRAFT_CONFIG_PATH . ENV . '/general.php'))) {
-    $customGeneralConfig = array_merge($customGeneralConfig, $customEnvironmentConfig);
-}
-
-return $customGeneralConfig;

@@ -7,13 +7,24 @@
  * You can see a list of the default settings in craft/app/etc/config/defaults/db.php
  */
 
-$dbCustomConfig = array(
-    'tablePrefix' => 'craft',
+// $_ENV constants are loaded by craft-multi-environment from .env.php via public/index.php
+return array(
+
+    // All environments
+    '*'       => array(
+        'tablePrefix' => 'craft',
+        'server'      => getenv('CRAFTENV_DB_HOST'),
+        'database'    => getenv('CRAFTENV_DB_NAME'),
+        'user'        => getenv('CRAFTENV_DB_USER'),
+        'password'    => getenv('CRAFTENV_DB_PASS'),
+    ),
+
+    // Live (production) environment
+    'live'    => array(),
+
+    // Staging (pre-production) environment
+    'staging' => array(),
+
+    // Local (development) environment
+    'local'   => array(),
 );
-
-// Merge environment-specific db info
-if (is_array($dbEnvironmentConfig = @include (CRAFT_CONFIG_PATH . ENV . '/db.php'))) {
-    $dbCustomConfig = array_merge($dbCustomConfig, $dbEnvironmentConfig);
-}
-
-return $dbCustomConfig;
