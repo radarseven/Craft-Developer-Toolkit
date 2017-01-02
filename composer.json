@@ -1,6 +1,6 @@
 {
     "require": {
-        // PHP DotEnv
-        "vlucas/phpdotenv": "^2.0"
+        "vlucas/phpdotenv": "^2.0",
+        "craft-cli/cli": "^0.7.0"
     }
 }

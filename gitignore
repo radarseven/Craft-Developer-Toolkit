@@ -30,7 +30,6 @@ craft/storage
 
 # Craft Local Config #
 ######################
-craft/config/local/db.php
 craft/config/local/general.php
 
 # Craft Plugin Submodules #

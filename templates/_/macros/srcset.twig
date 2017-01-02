@@ -1,0 +1,22 @@
+{% macro srcset(image, maxCssWidth, includeDimensions) %}
+    {%- spaceless %}
+        {# Is this a 2X image? #}
+        {% set is2x = image.filename matches '/@2x\\.\\w+$/' %}
+
+        {# Determine the CSS width for the image, if it were output at 100% #}
+        {% set cssWidth = (is2x ? round(image.width / 2) : image.width) %}
+
+        {# Determine the image size that 1X screens should get #}
+        {% set width = (cssWidth > maxCssWidth ? maxCssWidth : cssWidth) %}
+
+        {# Determine the image size that 2X screens should get #}
+        {% set width2x = (width * 2) > image.width ? image.width : (width * 2) %}
+
+        {# Output the srcset= attribute value #}
+        {# srcset="{{ image.getUrl(image.width != width ? { width: width }) }}, {{ image.getUrl(image.width != width2x ? { width: width2x }) }} 2x" #}
+        srcset="{{ image.getUrl(image.width != width ? { width: width }) }}"
+
+        {#- Output the width= and height= attributes if needed #}
+        {%- if includeDimensions %} width="{{ width }}" height="{{ image.getHeight({ width: width }) }}"{% endif %}
+    {% endspaceless -%}
+{% endmacro %}

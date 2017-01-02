@@ -9,7 +9,7 @@
 
 $customGeneralConfig = array(
 
-    'siteUrl'                         => 'http{% if craft.request.isSecure %}s{% endif %}:' . $_SERVER['SERVER_NAME'],
+    'siteUrl'                         => $_SERVER['SERVER_PROTOCOL'] . '://' . $_SERVER['SERVER_NAME'],
 
     // Triggers
     'cpTrigger'                       => 'admin',
