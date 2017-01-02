@@ -20,12 +20,12 @@ if (!defined('CRAFT_ENVIRONMENT')) {
 /**
  * Move plugins path to right above web root.
  */
-define('CRAFT_PLUGINS_PATH', realpath(__DIR__ . "/plugins") . '/');
+define('CRAFT_PLUGINS_PATH', realpath('../plugins/'));
 
 /**
  * Move templates path to right above web root.
  */
-define('CRAFT_TEMPLATES_PATH', realpath(__DIR__ . "/templates") . '/');
+define('CRAFT_TEMPLATES_PATH', realpath('../templates/'));
 
 /**
  * -----------------------------------------------------------

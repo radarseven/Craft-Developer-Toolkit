@@ -2,7 +2,7 @@
 
 # Do some cool setup stuff up 'er when first setting up the project. #
 
-bash ./makeItCraft.sh
+bash _utils/makeItCraft.sh
 
 # Remove unnecessary files from fresh Craft install.
 rm -f ./public/web.config
@@ -22,7 +22,10 @@ mv -f ./humans.txt ./public/humans.txt
 mv -f gitignore ./.gitignore
 
 # Run permissions.sh
-bash ./permissions.sh
+bash _utils/permissions.sh
+
+# Install composer packages.
+bash composer install
 
 # Self destruct
 rm -f ./makeItCraft.sh

@@ -70,68 +70,6 @@ echo ''
 coloredEcho 'See the docs for your options: http://buildwithcraft.com/docs/installing' red
 
 echo ''
-coloredEcho "Do you want to use PHPDotEnv and Composer (requires globally-installed Composer)?"
-read -p "[y/N]" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    echo ''
-    echo ''
-    cat >composer.json <<EOL
-{
-    "require": {
-        "vlucas/phpdotenv": "^2.0"
-    }
-}
-EOL
-    coloredEcho '- Created composer.json' magenta
-    cat >tmpIndexHeader <<EOL
-<?php
-require_once('../vendor/autoload.php');
-
-try {
-    \$dotenv = new Dotenv\Dotenv(dirname(__DIR__));
-    \$dotenv->load();
-    \$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS']);
-} catch (Exception \$e) {
-    exit('Could not find a .env file.');
-}
-EOL
-    # Chop off the first line and append to our header above
-    tail -n +2 public/index.php >> tmpIndexHeader
-    mv tmpIndexHeader public/index.php
-    coloredEcho '- Added composer and phpdotenv loader to public/index.php' magenta
-    echo ''
-
-    coloredEcho 'composer install' magenta
-    echo ''
-    composer install
-    echo ''
-
-    cat >.env <<EOL
-DB_HOST=localhost
-DB_NAME=craft
-DB_USER=root
-DB_PASS=root
-EOL
-    cp .env .env.example
-
-    coloredEcho '- Created .env and .env.example' magenta
-
-    touch .gitignore
-    echo '.env' >> .gitignore
-    echo '/vendor/' >> .gitignore
-
-    coloredEcho '- Added .env and /vendor/ to .gitignore' magenta
-
-    sed -i '' "s/.*'server'.*/    'server' => getenv('DB_HOST'),/" craft/config/db.php
-    sed -i '' "s/.*'user'.*/    'user' => getenv('DB_USER'),/" craft/config/db.php
-    sed -i '' "s/.*'password'.*/    'password' => getenv('DB_PASS'),/" craft/config/db.php
-    sed -i '' "s/.*'database'.*/    'database' => getenv('DB_NAME'),/" craft/config/db.php
-
-    coloredEcho '- Updated database configuration file to use PHPDotEnv' magenta
-fi
-
-echo ''
 coloredEcho 'Next steps:' white
 coloredEcho ' - Create a database with charset `utf8` and collation `utf8_unicode_ci`' magenta
 coloredEcho ' - Update craft/config/db.php with your database credentials' magenta
